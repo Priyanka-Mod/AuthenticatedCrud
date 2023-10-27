@@ -1,0 +1,110 @@
+<div class="user-detail-container">
+    <form class="form--container" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+        <p-card class="user-detail-title" header="USER DETAIL FORM">
+            <div class="padding--bottom">
+                <input class="width--full input--container" placeholder="Full Name" pInputText formControlName="name"/>
+                <div class="error--message" *ngIf="userFormControl.name.touched && userFormControl.name.invalid">
+                    Enter name
+                </div>
+            </div>
+            <div class="padding--bottom">
+                <p-calendar class="date--container input--container button--style" placeholder="Enter date of birth" formControlName="dob" [showIcon]="true" [minDate]="minDate" [maxDate]="maxDate"></p-calendar>
+            </div>
+            <div class="padding--bottom">
+                <input class="width--full input--container" placeholder="Email" pInputText formControlName="email"/>
+                <div class="error--message" *ngIf="userFormControl.email.touched && userFormControl.email.invalid">
+                    Enter Email
+                </div>
+                <div class="error--message" *ngIf="userFormControl.email.errors?.pattern">Enter valid email </div>
+            </div>
+            <div class="width--full padding--bottom ">
+                <div class="number-input-feild">
+                    <ngx-intl-tel-input class="tel--input" [cssClass]="'custom'"
+                        [preferredCountries]="preferredCountries"
+                        [enableAutoCountrySelect]="true"
+                        [enablePlaceholder]="true"
+                        [searchCountryFlag]="true"
+                        [searchCountryField]="[
+                        SearchCountryField.Iso2,
+                        SearchCountryField.Name
+                        ]"
+                        [selectFirstCountry]="false"
+                        [selectedCountryISO]="CountryISO.India"
+                        [maxLength]="15"
+                        [phoneValidation]="true"
+                        [separateDialCode]="separateDialCode"
+                        [numberFormat]="PhoneNumberFormat.National" name="number" formControlName="number">
+                    </ngx-intl-tel-input>
+                </div>
+                <div class="error--message"
+                    *ngIf="userFormControl.number.invalid && userFormControl.number.touched">Enter valid number
+                </div>
+            </div>
+
+            <div formGroupName="education">
+                <div class="padding--bottom">
+                    <input class="width--full input--container" placeholder="Institute Name" pInputText formControlName="institute"/>
+                    <div class="error--message" *ngIf="userFormControl.education.touched && userFormControl.education.invalid">
+                        Enter Institute Name
+                    </div>
+                </div>
+                <div class="padding--bottom">
+                    <p-dropdown class="dropdown-input-width input--container" [options]="catagories" formControlName="catagory" placeholder="Select your catagory" optionLabel="name"
+	                            [showClear]="false"></p-dropdown>
+                    <div class="error--message" *ngIf="userFormControl.education.touched && !userFormControl.education.valid">
+                        Please enter your catagory of education</div>
+                </div>
+                <div class="padding--bottom">
+                    <p-inputNumber  class="width--full input--container percentage--input" formControlName="percentage" inputId="percent" suffix="%"> </p-inputNumber>
+                    <div class="error--message" *ngIf="userFormControl.education.touched && userFormControl.education.invalid">
+                        Enter Percentage
+                    </div>
+                </div>
+            </div>
+            
+            <div class="padding--bottom flex justify-content-center gap-3" formGroupName="hobby">
+                Hobby:
+                <p-checkbox formControlName="art" value="Art" inputId="art"></p-checkbox>
+                    <label for="art">Art</label>
+                <p-checkbox formControlName="music" value="Music" inputId="music"></p-checkbox>
+                    <label for="music">Music</label>
+                <p-checkbox formControlName="read" value="Read" inputId="read"></p-checkbox>
+                    <label for="read">Read</label>
+                <p-checkbox formControlName="dance" value="Dance" inputId="dance"></p-checkbox>
+                    <label for="dance">Dance</label>    
+            </div>  
+
+            <div class="padding--bottom flex gap-2" >
+                Gender<span class="text--red">*</span>:
+                    <p-radioButton name="gender" value="male" label="Male" formControlName="gender" inputId='male'></p-radioButton>               
+                    <p-radioButton name="gender" value="female" label="Female"  formControlName="gender" inputId='famle'></p-radioButton>              
+                    <p-radioButton name="gender" value="other" label="Other"  formControlName="gender" inputId='other'></p-radioButton>
+            </div>
+            <div  class="error--message" *ngIf="userFormControl.gender.touched && !userFormControl.gender.valid"> Please select your gender </div>
+
+            <div>
+                <p-button class="add-address-button button--style" (click)="addAddress()" type="button"> Add
+                    Address
+                </p-button>
+            </div>
+            <div formArrayName="address">
+                <div *ngFor="let newAddress of address.controls; let i = index">
+                    <div [formGroup]="newAddress">
+                        <div>
+                            <textarea placeholder="Address No. {{ i + 1 }}" class="textarea--input"
+                                pInputTextarea formControlName="addedAddress"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <textarea placeholder="Summary" class="textarea--input margin--bottom"
+                    pInputTextarea formControlName="summary"></textarea>
+            </div>
+            <div class="buttons">
+                <p-button class="button--style" label="Submit" [raised]="true" [disabled]="!userForm.valid" type="submit"></p-button>
+                <p-button class="button--style" label="Reset" type="reset"></p-button>
+            </div>
+        </p-card>
+    </form>
+</div>

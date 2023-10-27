@@ -1,0 +1,61 @@
+.padding--bottom {
+    padding-bottom: 20px;
+}
+
+.width--full {
+    width: 95%;
+}
+
+.log-in-button {
+    width: 95%;
+    .p-button.p-button-raised {
+        width: 100%;
+        background-color: rgb(123, 39, 201);
+        border-color: none;
+    }
+    .p-button{
+        border-style: none;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        border-radius: 6px;
+    }
+}
+
+.p-card header{
+    background-color: rgb(132, 48, 241);
+}
+/* .log-in-containter{
+    .p-card .p-card-body{
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+} */
+.input--container{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
+    .p-inputtext {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+}
+.log-in-container {
+    height: 100%;
+    margin: 15% auto;
+    width: 360px;
+}
+
+.error--message {
+    color: #f44336;
+    font-size: 12px;
+    padding-left: 5px;
+    padding-top: 5px;
+}
+.log-in-title{
+    .p-card .p-card-title{
+        color: blueviolet
+    }
+    .p-card{
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+}
+.log-in-content{
+    height: 100%;
+    width: auto;
+}
+
+

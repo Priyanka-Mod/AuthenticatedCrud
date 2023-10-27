@@ -1,0 +1,33 @@
+<p>show-user-detail works!</p>
+
+<p-table [columns]="displayColumn" [value]="userDetailArray" [tableStyle]="{ 'min-width': '50rem' }">
+    <ng-template pTemplate="header" let-columns>
+        <tr>
+            <th *ngFor="let col of columns">
+                {{ col | uppercase}}
+            </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-userDetail >
+        <tr>
+            <td>
+                {{ userDetail.name || uppercase }}
+            </td>
+            <td>{{userDetail.email}}</td>
+            <td>{{userDetail.dob |  date:'longDate'}}</td>
+            <td>{{userDetail.number.internationalNumber}}</td>
+            <td>{{userDetail.institute}}</td>
+            <td>{{userDetail.catagory.name}}</td>
+            <td>{{userDetail.percentage}}</td>
+            <td>{{userDetail.gender}}</td>
+            <td *ngIf="userDetail.hobby">{{userDetail.hobby}}</td>
+            <td *ngIf="userDetail.address">{{userDetail.address}}</td>
+            <td *ngIf="userDetail.summary">{{userDetail.summary}}</td>
+            <td class="action--container">
+                <p-button class="button" label="Edit" [raised]="true" type="button" (click)="onEdit(userDetail.id)"></p-button>
+                <p-button class="button" label="Delete" [raised]="true" type="button" (click)="onDelete(userDetail.id)"></p-button>
+            </td>
+        </tr>
+    </ng-template> 
+</p-table>
+<p-button class="button" label="All User" [raised]="true" type="button" (click)="onShowAll()"></p-button>
