@@ -1,33 +1,59 @@
-<p>show-all-users works!</p>
-<p-table [columns]="displayColumn" [value]="userDetailArray" [tableStyle]="{ 'min-width': '50rem' }">
-    <ng-template pTemplate="header" let-columns>
-        <tr>
-            <th *ngFor="let col of columns">
-                {{ col | uppercase}}
-            </th>
-        </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-userDetail >
-        <tr *ngFor="let userDetail in ">
-            <td>
-                {{ userDetail.name || uppercase }}
-            </td>
-            <td>{{userDetail.email}}</td>
-            <td>{{userDetail.dob |  date:'longDate'}}</td>
-            <td>{{userDetail.number.internationalNumber}}</td>
-            <td>{{userDetail.institute}}</td>
-            <td>{{userDetail.catagory.name}}</td>
-            <td>{{userDetail.percentage}}</td>
-            <td>{{userDetail.gender}}</td>
-            <td *ngIf="userDetail.hobby">{{userDetail.hobby}}</td>
-            <td *ngIf="userDetail.address">{{userDetail.address}}</td>
-            <td *ngIf="userDetail.summary">{{userDetail.summary}}</td>
-            <td class="action--container">
-                <p-button class="button" label="Edit" [raised]="true" type="button" (click)="onEdit()"></p-button>
-                <p-button class="button" label="Delete" [raised]="true" type="button" (click)="onDelete()"></p-button>
-            </td>
-        </tr>
-    </ng-template>
-    <!-- <p-button class="button" label="All User" [raised]="true" type="button" (click)="onShowAll()"></p-button> -->
- 
-</p-table>
+<div class="table--container">
+    <div class="heading--container">
+        <span class="heading">All users details</span> 
+        <span>
+            <p-button class="button" label="Add new user" [raised]="true" type="button" (click)="onCreateUser()"></p-button>
+        </span>
+    </div>
+    
+    <p-table [columns]="displayColumn" [value]="formArray"  styleClass="p-datatable-gridlines" class="card">
+        <ng-template pTemplate="header" let-columns>
+            <tr>
+                <th class="header" *ngFor="let col of columns">
+                    {{ col | uppercase}}
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-userDetail >
+            <tr>
+                <td>
+                    {{ userDetail.name || uppercase }}
+                </td>
+                <td>{{userDetail.email}}</td>
+                <td>{{userDetail.dob |  date:'longDate'}}</td>
+                <td>{{userDetail.number.internationalNumber}}</td>
+                <td>{{userDetail.education.institute}}</td>
+                <td>{{userDetail.education.catagory.name}}</td>
+                <td>{{userDetail.education.percentage}}</td>
+                <td>{{userDetail.gender}}</td>
+                <td  *ngIf="userDetail.hobby">{{userDetail.hobby | json}}</td>
+
+                <td>
+                    <ng-container *ngIf="userDetail.address && userDetail.address.length > 0">
+                      <div *ngFor="let address of userDetail.address">
+                        {{ address.addedAddress }}
+                        <br>
+                      </div>
+                    </ng-container>
+                    <ng-container *ngIf="!userDetail.address || userDetail.address.length === 0">
+                      -
+                    </ng-container>
+                </td>
+                <td>
+                    <ng-container *ngIf="userDetail.summary">
+                        <div>{{userDetail.summary}}</div>
+                    </ng-container>
+                    <ng-container *ngIf="!userDetail.summary || userDetail.summary.length === 0">
+                        -
+                      </ng-container>
+                </td>
+                <td class="action--container" >
+                    <p-button class="button" label="Edit" [raised]="true" type="button" (click)="onEdit(userDetail)"></p-button>
+                    <p-button class="button" label="Delete" [raised]="true" type="button" (click)="onDelete(userDetail.id)"></p-button>
+                </td>
+            </tr>
+        </ng-template>
+
+    
+    </p-table>
+</div>

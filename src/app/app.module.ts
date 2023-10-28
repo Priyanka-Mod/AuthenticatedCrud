@@ -23,16 +23,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { ShowUserDetailComponent } from './show-user-detail/show-user-detail.component';
 import { AppRoutingModule } from './app-routing.module';
-import { UserDataService } from './user-detail.service';
+// import { UserDataService } from './user-detail.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ShowAllUsersComponent } from './show-all-users/show-all-users.component';
+import { DatePipe } from '@angular/common';
+// import { EditUserComponent } from './edit-user/edit-user.component';
 @NgModule({
   declarations: [
     AppComponent,
     LogInComponent,
     UserDetailComponent,
     ShowUserDetailComponent,
-    ShowAllUsersComponent
+    ShowAllUsersComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,7 +57,7 @@ import { ShowAllUsersComponent } from './show-all-users/show-all-users.component
     TableModule,
     HttpClientModule
   ],
-  providers: [UserDataService],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

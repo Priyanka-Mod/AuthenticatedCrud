@@ -2,13 +2,18 @@ import { Component ,OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { FormArray , FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {SearchCountryField,CountryISO,PhoneNumberFormat} from "ngx-intl-tel-input";
-import { UserDataService } from '../user-detail.service';
+// import { UserDataService } from '../user-detail.service';
+import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { User } from '../datatype.model';
+import { DatePipe } from '@angular/common';
+
 @Component({
   selector: 'app-user-detail',
   templateUrl: './user-detail.component.html',
   styleUrls: ['./user-detail.component.css']
 })
+
 export class UserDetailComponent implements OnInit {
   userForm:FormGroup;
   minDate = new Date('01/01/2000');
@@ -25,8 +30,9 @@ export class UserDetailComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private router: Router, 
-              private userdata:UserDataService,
-              private http:HttpClient) {
+              private http:HttpClient,
+              private datePipe: DatePipe,
+              private route: ActivatedRoute) {
       this.catagories = [
         {name: 'SSC'},
         {name: 'HSC'},
@@ -57,12 +63,15 @@ export class UserDetailComponent implements OnInit {
       summary: ['']
     });
 
-    if (this.userForm) {
-      this.userdata.getUserFormData().subscribe(formData => {
-        
+    const userId = this.route.snapshot.params['id'];
+
+    if (userId) {
+      this.http.get<User>('http://localhost:3000/user-detail'+'/'+userId).subscribe(formData => {
+        const formattedDob = this.datePipe.transform(formData.dob, 'dd/MM/yyyy');
+        console.log(formData , 'update')
         const updateValue = {
           name: formData.name,
-          dob: formData.dob,
+          dob: formattedDob,
           email: formData.email,
           number: formData.number,
           education:{
@@ -76,7 +85,7 @@ export class UserDetailComponent implements OnInit {
         }
         const hobby:object = {}
         for(let key in formData.hobby){
-          if(formData.hobby[key.length]>0) {
+          if(formData.hobby[key]) {
             hobby[key]=formData.hobby[key]
           }
         }
@@ -111,15 +120,26 @@ export class UserDetailComponent implements OnInit {
     })
     this.address.push(newAddress);
   }
-  onSubmit() : void {
-    // this.userdata.setUserFormData(this.userForm.value);
 
-    this.http.post('http://localhost:3000/user-detail',this.userForm.value).subscribe((result)=>{
-        if(result){
-          this.router.navigate(['/details'])
-        }
-      })
-    console.log(this.userForm.value)
-    // this.router.navigate(['/details'])
+  onSubmit() : void {
+    if (this.userForm.valid) {
+      if (this.route.snapshot.params['id']) {
+        // Editing an existing user
+        const userId = this.route.snapshot.params['id'];
+        this.http.put('http://localhost:3000/user-detail'+"/"+userId, this.userForm.value).subscribe((result) => {
+          if (result) {
+            this.router.navigate(['/allUserDetails']);
+          }
+        });
+      } 
+      else {
+        // Adding a new user
+        this.http.post('http://localhost:3000/user-detail', this.userForm.value).subscribe((result) => {
+          if (result) {
+            this.router.navigate(['/userDetails']);
+          }
+        });
+      }
+    } 
   }
 }

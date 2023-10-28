@@ -13,6 +13,7 @@ export interface userDetail{
     gender: string
 }
 export interface User{
+    id:number
     name: string,
     dob: Date,
     email:string,

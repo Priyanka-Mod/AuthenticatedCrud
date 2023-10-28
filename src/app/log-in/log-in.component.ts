@@ -15,4 +15,7 @@ export class LogInComponent {
     console.log(data)
     this.router.navigate(['/form'])
   }
+  onShowAll(){
+    this.router.navigate(['/allUserDetails'])
+  }
 }

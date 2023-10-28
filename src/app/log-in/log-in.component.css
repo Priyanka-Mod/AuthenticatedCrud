@@ -23,14 +23,12 @@
 .p-card header{
     background-color: rgb(132, 48, 241);
 }
-/* .log-in-containter{
-    .p-card .p-card-body{
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-} */
+
 .input--container{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
     .p-inputtext {
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        width: 100%;
     }
 }
 .log-in-container {
@@ -51,11 +49,12 @@
     }
     .p-card{
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        background-color: lavender;
     }
 }
-.log-in-content{
-    height: 100%;
-    width: auto;
+
+@media screen and (max-width:480px) {
+    .log-in-container{
+        width: 290px;
+    }
 }
-
-

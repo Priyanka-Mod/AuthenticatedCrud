@@ -1,5 +1,5 @@
 import { Component ,OnInit} from '@angular/core';
-import { UserDataService } from '../user-detail.service';
+// import { UserDataService } from '../user-detail.service';
 import { Router } from '@angular/router';
 import {User} from '../datatype.model';
 import { userDetail } from '../datatype.model';
@@ -20,12 +20,11 @@ export class ShowUserDetailComponent implements OnInit{
   userArray:userDetail[] = [];
   displayColumn =['name','email','dob','number','institute','catagory','percentage','gender']; 
 
-  constructor(private userData:UserDataService,
-              private router:Router,
+  constructor(private router:Router,
               private http:HttpClient){}
   ngOnInit(): void {
 
-    this.http.get('http://localhost:3000/user-detail').subscribe(formData => {
+    this.http.get<User>('http://localhost:3000/user-detail').subscribe(formData => {
       console.log(formData , "get")
 
       for(let i in formData){
@@ -78,16 +77,19 @@ export class ShowUserDetailComponent implements OnInit{
   }
   
   onEdit():void{
-    this.router.navigate(['/form'])
+    this.router.navigate(['/form',this.formData])
   }
-  onDelete(data:number):void{
-    this.http.delete("http://localhost:3000/user-detail"+ "/id:" +data).subscribe(update=>{
+  onDelete():void{
+    this.http.delete("http://localhost:3000/user-detail"+ "/" + this.formData.id).subscribe(update=>{
       console.log(update)
+      if (this.userDetailArray) {
+        this.userDetailArray = undefined;
+      }
     })
   }
   
   onShowAll(){
-    this.router.navigate(['/showAll'])
+    this.router.navigate(['/allUserDetails'])
   }
 } 
 

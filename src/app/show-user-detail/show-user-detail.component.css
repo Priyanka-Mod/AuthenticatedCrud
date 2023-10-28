@@ -1,3 +1,7 @@
+.table--container{
+    background-color: lavender;
+    height: 100vh;
+}
 .button {
     .p-button.p-button-raised {
         width: 100%;
@@ -14,4 +18,22 @@
     display: flex;
     flex-direction: row;
     gap: 10px;
+}
+.center{
+    margin-left:45%;
+}
+.padding--top{
+    padding-top:20px;
+}
+.header{
+    background-color: rgb(152, 79, 221);
+    color: white;
+}
+.card{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin: 0px 20px;
+}
+.heading{
+    color: blueviolet;
+    padding: 20px;
 }
