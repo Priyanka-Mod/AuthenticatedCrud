@@ -31,7 +31,7 @@ export class UserDetailComponent implements OnInit {
               private router: Router, 
               private http:HttpClient,
               private datePipe: DatePipe,
-              private userData:UserDataService,
+              private userService:UserDataService,
               private route: ActivatedRoute) {
       this.catagories = [
         {name: 'SSC'},
@@ -66,7 +66,7 @@ export class UserDetailComponent implements OnInit {
     const userId = this.route.snapshot.params['id'];
 
     if (userId) {
-      this.userData.userDetailGetIdService(userId).subscribe(formData => {
+      this.userService.editUser(userId).subscribe(formData => {
         const formattedDob = this.datePipe.transform(formData.dob, 'dd/MM/yyyy');
         const updateValue = {
           name: formData.name,
@@ -126,17 +126,17 @@ export class UserDetailComponent implements OnInit {
       if (this.route.snapshot.params['id']) {
         // Editing an existing user
         const userId = this.route.snapshot.params['id'];
-        this.userData.userDetailPutService(userId, this.userForm.value).subscribe((result) => {
+        this.userService.updateSingleUser(userId, this.userForm.value).subscribe((result) => {
           if (result) {
-            this.router.navigate(['/allUserDetails']);
+            this.router.navigate(['/user-list']);
           }
         });
       } 
       else {
         // Adding a new user
-        this.userData.userDetailPostService(this.userForm.value).subscribe((result) => {
+        this.userService.updateUser(this.userForm.value).subscribe((result) => {
           if (result) {
-            this.router.navigate(['/userDetails']);
+            this.router.navigate(['/user-detail']);
           }
         });
       }

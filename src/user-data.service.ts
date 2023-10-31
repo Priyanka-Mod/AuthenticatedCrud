@@ -7,22 +7,21 @@ import { User } from './app/datatype.model';
   providedIn: 'root'
 })
 export class UserDataService{
-  private formDataSubject: BehaviorSubject<User> = new BehaviorSubject<User>({} as User);
   
-  constructor(private http:HttpClient) { }
-  userDetailPostService(userData:User){
+  constructor(private readonly http:HttpClient) { }
+  updateUser(userData:User){
     return this.http.post<User>('http://localhost:3000/user-detail',userData)
   }
-  userDetailGetIdService(userId:number){
+  editUser(userId:number){
     return this.http.get<User>('http://localhost:3000/user-detail'+"/"+userId)
   }
-  userDetailPutService(userId:number , userData){
+  updateSingleUser(userId:number , userData){
     return this.http.put<User>('http://localhost:3000/user-detail'+"/"+userId,userData)
   }
-  userDetailGetService(){
+  getUser(){
     return this.http.get<User | User[]>('http://localhost:3000/user-detail')
   }
-  userDetailDeleteService(userId:number){
+  deleteUser(userId:number){
     return this.http.delete<User>('http://localhost:3000/user-detail'+"/"+userId)
   }
 }

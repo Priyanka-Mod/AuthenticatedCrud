@@ -15,6 +15,6 @@ export class LogInComponent {
     this.router.navigate(['/form'])
   }
   onShowAllUser(){
-    this.router.navigate(['/allUserDetails'])
+    this.router.navigate(['/user-list'])
   }
 }

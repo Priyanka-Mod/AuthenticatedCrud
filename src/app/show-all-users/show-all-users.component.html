@@ -17,7 +17,7 @@
         <ng-template pTemplate="body" let-userDetail >
             <tr>
                 <td>
-                    {{ userDetail.name || uppercase }}
+                    {{ userDetail.name | uppercase }}
                 </td>
                 <td>{{userDetail.email}}</td>
                 <td>{{userDetail.dob |  date:'longDate'}}</td>

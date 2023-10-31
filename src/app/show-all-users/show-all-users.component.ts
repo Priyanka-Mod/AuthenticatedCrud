@@ -21,11 +21,11 @@ export class ShowAllUsersComponent implements OnInit {
   displayColumn = ['name', 'email', 'dob', 'number', 'institute', 'catagory', 'percentage', 'gender', 'hobby', 'address', 'summary', 'action'];
 
   constructor(private http: HttpClient,
-    private userData:UserDataService,
+    private userService:UserDataService,
     private router: Router) { }
 
   ngOnInit(): void {
-    this.userData.userDetailGetService().subscribe(formData => {
+    this.userService.getUser().subscribe(formData => {
       this.userDataArray = formData as User[];   //to define that it is of type user[] in get request
       for (let i in formData) {
         this.formShowUserData = this.userDataArray[i];
@@ -53,9 +53,9 @@ export class ShowAllUsersComponent implements OnInit {
     this.router.navigate(['/form', userId])
   }
   onDeleteUser(userId: number): void {
-    this.userData.userDetailDeleteService(userId).subscribe(deleteUpadated => {
+    this.userService.deleteUser(userId).subscribe(deleteUpadated => {
 
-      this.userData.userDetailGetService().subscribe(formData => {
+      this.userService.getUser().subscribe(formData => {
         this.userDataArray = formData as User[]
         for (let i in formData) {
           this.formShowUserData = this.userDataArray[i];

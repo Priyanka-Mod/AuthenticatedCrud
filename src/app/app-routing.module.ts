@@ -11,8 +11,8 @@ const routes: Routes = [
   {path:"login",component:LogInComponent},
   {path:"form", component:UserDetailComponent},
   {path:"form/:id", component:UserDetailComponent},
-  {path:'userDetails',component:ShowUserDetailComponent},
-  {path:'allUserDetails', component:ShowAllUsersComponent},
+  {path:'user-detail',component:ShowUserDetailComponent},
+  {path:'user-list', component:ShowAllUsersComponent},
 ];
 
 @NgModule({

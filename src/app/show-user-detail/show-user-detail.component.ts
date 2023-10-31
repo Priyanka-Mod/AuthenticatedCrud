@@ -21,10 +21,10 @@ export class ShowUserDetailComponent implements OnInit{
 
   constructor(private router:Router,
               private http:HttpClient,
-              private userData:UserDataService){}
+              private userService:UserDataService){}
   ngOnInit(): void {
 
-    this.userData.userDetailGetService().subscribe(formData => {
+    this.userService.getUser().subscribe(formData => {
 
       for(let i in formData){
         this.formUserData = formData[i];
@@ -79,7 +79,7 @@ export class ShowUserDetailComponent implements OnInit{
     this.router.navigate(['/form',this.formUserData.id])
   }
   onDeleteUser():void{
-    this.userData.userDetailDeleteService(this.formUserData.id).subscribe(update=>{
+    this.userService.deleteUser(this.formUserData.id).subscribe(update=>{
       if (this.userDetailValues) {
         this.userDetailValues = undefined;
       }
@@ -87,7 +87,7 @@ export class ShowUserDetailComponent implements OnInit{
   }
   
   onShowAll(){
-    this.router.navigate(['/allUserDetails'])
+    this.router.navigate(['/user-list'])
   }
 } 
 
