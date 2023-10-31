@@ -1,9 +1,9 @@
 import { Component ,OnInit} from '@angular/core';
-// import { UserDataService } from '../user-detail.service';
 import { Router } from '@angular/router';
 import {User} from '../datatype.model';
 import { userDetail } from '../datatype.model';
 import { HttpClient } from '@angular/common/http';
+import { UserDataService } from 'src/user-data.service';
 
 @Component({
     selector: 'app-show-user-detail',
@@ -12,51 +12,50 @@ import { HttpClient } from '@angular/common/http';
   }) 
 
 export class ShowUserDetailComponent implements OnInit{
-  formData:User;
-  str:string='';
+  formUserData:User;
+  hobby:string='';
   userAddress:string='';
-  userDetailArray:userDetail[];
-
-  userArray:userDetail[] = [];
+  userDetailValues:userDetail[];
+  userDetailsArray:userDetail[] = [];
   displayColumn =['name','email','dob','number','institute','catagory','percentage','gender']; 
 
   constructor(private router:Router,
-              private http:HttpClient){}
+              private http:HttpClient,
+              private userData:UserDataService){}
   ngOnInit(): void {
 
-    this.http.get<User>('http://localhost:3000/user-detail').subscribe(formData => {
-      console.log(formData , "get")
+    this.userData.userDetailGetService().subscribe(formData => {
 
       for(let i in formData){
-        this.formData = formData[i];
+        this.formUserData = formData[i];
       }
 
       const userDetail:userDetail= {
-        name: this.formData.name,
-        email:this.formData.email,
-        dob:this.formData.dob,
-        number:this.formData.number,
-        institute:this.formData.education.institute,
-        catagory:this.formData.education.catagory,
-        percentage:this.formData.education.percentage,
-        gender:this.formData.gender,
+        name: this.formUserData.name,
+        email:this.formUserData.email,
+        dob:this.formUserData.dob,
+        number:this.formUserData.number,
+        institute:this.formUserData.education.institute,
+        catagory:this.formUserData.education.catagory,
+        percentage:this.formUserData.education.percentage,
+        gender:this.formUserData.gender,
       }
 
-      for(let key in  this.formData.hobby ){
-        if(this.formData.hobby[key]) {
-          this.str = this.str + '  ' + key; + '<br/>'
+      for(let key in  this.formUserData.hobby ){
+        if(this.formUserData.hobby[key]) {
+          this.hobby = this.hobby + '  ' + key; + '<br/>'
         }
       }
 
-      for(let a in this.formData.address){
-        if(this.formData.address[a]){
-          this.userAddress += `  ${this.formData.address[a].addedAddress}\n\n`;
+      for(let a in this.formUserData.address){
+        if(this.formUserData.address[a]){
+          this.userAddress += `  ${this.formUserData.address[a].addedAddress}\n\n`;
         }
       }
   
-      if(this.str){
+      if(this.hobby){
         this.displayColumn.push('hobby')
-        userDetail['hobby']=this.str
+        userDetail['hobby']=this.hobby
       }
 
     
@@ -65,25 +64,24 @@ export class ShowUserDetailComponent implements OnInit{
         userDetail['address'] = this.userAddress;
       }
 
-      if(this.formData.summary){
+      if(this.formUserData.summary){
         this.displayColumn.push('summary')
-        userDetail['summary']=this.formData.summary
+        userDetail['summary']=this.formUserData.summary
       }
 
       this.displayColumn.push('action');
-      this.userArray.push(userDetail)
-      this.userDetailArray=this.userArray
+      this.userDetailsArray.push(userDetail)
+      this.userDetailValues=this.userDetailsArray
     });
   }
   
-  onEdit():void{
-    this.router.navigate(['/form',this.formData])
+  onEditUser():void{
+    this.router.navigate(['/form',this.formUserData.id])
   }
-  onDelete():void{
-    this.http.delete("http://localhost:3000/user-detail"+ "/" + this.formData.id).subscribe(update=>{
-      console.log(update)
-      if (this.userDetailArray) {
-        this.userDetailArray = undefined;
+  onDeleteUser():void{
+    this.userData.userDetailDeleteService(this.formUserData.id).subscribe(update=>{
+      if (this.userDetailValues) {
+        this.userDetailValues = undefined;
       }
     })
   }

@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../datatype.model';
 import { userDetail } from '../datatype.model';
 import { Router } from '@angular/router';
+import { UserDataService } from 'src/user-data.service';
 
 
 @Component({
@@ -11,90 +12,67 @@ import { Router } from '@angular/router';
   styleUrls: ['./show-all-users.component.css']
 })
 export class ShowAllUsersComponent implements OnInit {
-  str: string
-  formShowData: any
-  formArray: User[] = []
+  formShowUserData: User
+  userDataArray: User[] = []
   userAddress: string = '';
-  userDetailArray: userDetail[];
+  userDetailValues: userDetail[];
 
-  userArray: userDetail[] = [];
+  userDetailArray: userDetail[] = [];
   displayColumn = ['name', 'email', 'dob', 'number', 'institute', 'catagory', 'percentage', 'gender', 'hobby', 'address', 'summary', 'action'];
 
   constructor(private http: HttpClient,
+    private userData:UserDataService,
     private router: Router) { }
 
   ngOnInit(): void {
-    this.http.get<User[]>('http://localhost:3000/user-detail').subscribe(formData => {
-      console.log(formData, "get")
-      this.formArray = formData
+    this.userData.userDetailGetService().subscribe(formData => {
+      this.userDataArray = formData as User[];   //to define that it is of type user[] in get request
       for (let i in formData) {
-        this.formShowData = this.formArray[i];
+        this.formShowUserData = this.userDataArray[i];
       }
       const userDetail: userDetail = {
-        name: this.formShowData.name,
-        email: this.formShowData.email,
-        dob: this.formShowData.dob,
-        number: this.formShowData.number,
-        institute: this.formShowData.education.institute,
-        catagory: this.formShowData.education.catagory,
-        percentage: this.formShowData.education.percentage,
-        gender: this.formShowData.gender,
+        name: this.formShowUserData.name,
+        email: this.formShowUserData.email,
+        dob: this.formShowUserData.dob,
+        number: this.formShowUserData.number,
+        institute: this.formShowUserData.education.institute,
+        catagory: this.formShowUserData.education.catagory,
+        percentage: this.formShowUserData.education.percentage,
+        gender: this.formShowUserData.gender,
       }
 
-      for(let key in  this.formShowData.hobby ){
-        if(this.formShowData.hobby[key]) {
-          this.str = this.str + '  ' + key; + '<br/>'
-        }
-      }
-      if(this.str){
-        userDetail['hobby']=this.str
-      }
-
-      this.userArray.push(userDetail)
-      this.userDetailArray = this.userArray
+      this.userDetailArray.push(userDetail)
+      this.userDetailValues = this.userDetailArray
 
     });
   }
   onCreateUser(){
     this.router.navigate(['/form'])
   }
-  onEdit(data: any): void {
-    console.log(data)
-    this.router.navigate(['/form', data])
+  onEditUser(userId: number): void {
+    this.router.navigate(['/form', userId])
   }
-  onDelete(userId: number): void {
-    this.http.delete("http://localhost:3000/user-detail" + "/" + userId).subscribe(deleteUpadated => {
-      console.log(userId + 'is deleted')
+  onDeleteUser(userId: number): void {
+    this.userData.userDetailDeleteService(userId).subscribe(deleteUpadated => {
 
-      this.http.get<User[]>("http://localhost:3000/user-detail").subscribe(formData => {
-        console.log(formData, "get")
-        this.formArray = formData
+      this.userData.userDetailGetService().subscribe(formData => {
+        this.userDataArray = formData as User[]
         for (let i in formData) {
-          this.formShowData = this.formArray[i];
+          this.formShowUserData = this.userDataArray[i];
         }
         const userDetail: userDetail = {
-          name: this.formShowData.name,
-          email: this.formShowData.email,
-          dob: this.formShowData.dob,
-          number: this.formShowData.number,
-          institute: this.formShowData.education.institute,
-          catagory: this.formShowData.education.catagory,
-          percentage: this.formShowData.education.percentage,
-          gender: this.formShowData.gender,
+          name: this.formShowUserData.name,
+          email: this.formShowUserData.email,
+          dob: this.formShowUserData.dob,
+          number: this.formShowUserData.number,
+          institute: this.formShowUserData.education.institute,
+          catagory: this.formShowUserData.education.catagory,
+          percentage: this.formShowUserData.education.percentage,
+          gender: this.formShowUserData.gender,
         }
 
-        for (let key in this.formShowData.hobby) {
-          if (this.formShowData.hobby[key]) {
-            this.str = this.str + '  ' + key; + '<br/>'
-          }
-        }
-
-        if (this.str) {
-          userDetail['hobby'] = this.str
-        }
-
-        this.userArray.push(userDetail)
-        this.userDetailArray = this.userArray
+        this.userDetailArray.push(userDetail)
+        this.userDetailValues = this.userDetailArray
       })
 
     })

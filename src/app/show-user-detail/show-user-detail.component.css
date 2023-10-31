@@ -14,11 +14,7 @@
         border-radius: 6px;
     }
 }
-.action--container{
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-}
+
 .center{
     margin-left:45%;
 }

@@ -27,6 +27,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ShowAllUsersComponent } from './show-all-users/show-all-users.component';
 import { DatePipe } from '@angular/common';
+import { UserDataService } from 'src/user-data.service';
 // import { EditUserComponent } from './edit-user/edit-user.component';
 @NgModule({
   declarations: [
@@ -57,7 +58,7 @@ import { DatePipe } from '@angular/common';
     TableModule,
     HttpClientModule
   ],
-  providers: [DatePipe],
+  providers: [DatePipe,UserDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

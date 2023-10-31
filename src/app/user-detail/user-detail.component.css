@@ -16,7 +16,13 @@
     .p-card{
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
         background-color: lavender;
+        max-height: 936px;
+        overflow-y: auto;
     }
+}
+.card--height{
+    max-height: 936px;
+    overflow-y: auto;
 }
 .padding--bottom {
     padding-bottom: 20px;
@@ -41,10 +47,7 @@
 .p-card header{
     background-color: rgb(132, 48, 241);
 }
-/* .log-in-containter{
-    .p-card .p-card-body{
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-} */
+
 .input--container{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
     .p-inputtext {
@@ -137,13 +140,6 @@
     margin-bottom: 20px;
 }
 .button--style{
-    /* .button{
-        color: white;
-        background: blueviolet;
-        border-style: none;
-        border-radius: 6px;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    } */
     .p-button.p-button-raised {
         width: 100%;
         background-color: rgb(123, 39, 201);

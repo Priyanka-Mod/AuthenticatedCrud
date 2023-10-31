@@ -1,5 +1,5 @@
 <div class="user-detail-container">
-    <form class="form--container" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <form class="form--container" [formGroup]="userForm" (ngSubmit)="onSubmitUser()">
         <p-card class="user-detail-title" header="USER DETAIL FORM">
             <div class="padding--bottom">
                 <input class="width--full input--container" placeholder="Full Name" pInputText formControlName="name"/>
@@ -44,19 +44,19 @@
             <div formGroupName="education">
                 <div class="padding--bottom">
                     <input class="width--full input--container" placeholder="Institute Name" pInputText formControlName="institute"/>
-                    <div class="error--message" *ngIf="userFormControl.education.touched && userFormControl.education.invalid">
+                    <div class="error--message" *ngIf="userFormControl.education['controls'].institute.touched && userFormControl.education['controls'].institute.invalid">
                         Enter Institute Name
                     </div>
                 </div>
                 <div class="padding--bottom">
                     <p-dropdown class="dropdown-input-width input--container" [options]="catagories" formControlName="catagory" placeholder="Select your catagory" optionLabel="name"
 	                            [showClear]="false"></p-dropdown>
-                    <div class="error--message" *ngIf="userFormControl.education.touched && !userFormControl.education.valid">
+                    <div class="error--message" *ngIf="userFormControl.education['controls'].catagory.touched && userFormControl.education['controls'].catagory.invalid">
                         Please enter your catagory of education</div>
                 </div>
                 <div class="padding--bottom">
                     <p-inputNumber  class="width--full input--container percentage--input" formControlName="percentage" inputId="percent" suffix="%"> </p-inputNumber>
-                    <div class="error--message" *ngIf="userFormControl.education.touched && userFormControl.education.invalid">
+                    <div class="error--message" *ngIf="userFormControl.education['controls'].percentage.touched && userFormControl.education['controls'].percentage                                                .invalid">
                         Enter Percentage
                     </div>
                 </div>

@@ -1,146 +1,6 @@
 {
   "user-detail": [
     {
-      "name": "sdfsad",
-      "dob": "04/10/2023",
-      "email": "dsf@ss.cc",
-      "number": {
-        "number": "9875455555",
-        "internationalNumber": "+91 98754 55555",
-        "nationalNumber": "098754 55555",
-        "e164Number": "+919875455555",
-        "countryCode": "IN",
-        "dialCode": "+91"
-      },
-      "education": {
-        "institute": "asdsd",
-        "catagory": {
-          "name": "HSC"
-        },
-        "percentage": 98
-      },
-      "hobby": {
-        "music": [
-          "Music"
-        ],
-        "art": [
-          "Art"
-        ],
-        "dance": [
-          "Dance"
-        ],
-        "read": [
-          "Read"
-        ]
-      },
-      "gender": "female",
-      "address": [
-        {
-          "addedAddress": "asd address"
-        }
-      ],
-      "summary": "sdsdsd summaryyy added",
-      "id": 33
-    },
-    {
-      "name": "sdfsdf",
-      "dob": "2023-10-04T18:30:00.000Z",
-      "email": "sdf@sad.cc",
-      "number": {
-        "number": "9765465444",
-        "internationalNumber": "+91 97654 65444",
-        "nationalNumber": "097654 65444",
-        "e164Number": "+919765465444",
-        "countryCode": "IN",
-        "dialCode": "+91"
-      },
-      "education": {
-        "institute": "sdfsdf",
-        "catagory": {
-          "name": "HSC"
-        },
-        "percentage": 89
-      },
-      "hobby": {
-        "music": "",
-        "art": "",
-        "dance": "",
-        "read": ""
-      },
-      "gender": "female",
-      "address": [],
-      "summary": "",
-      "id": 34
-    },
-    {
-      "name": "sdfsdf",
-      "dob": "2023-10-03T18:30:00.000Z",
-      "email": "dsf@safd.cc",
-      "number": {
-        "number": "9875465555",
-        "internationalNumber": "+91 98754 65555",
-        "nationalNumber": "098754 65555",
-        "e164Number": "+919875465555",
-        "countryCode": "IN",
-        "dialCode": "+91"
-      },
-      "education": {
-        "institute": "sdfsdf",
-        "catagory": {
-          "name": "SSC"
-        },
-        "percentage": 89
-      },
-      "hobby": {
-        "music": [
-          "Music"
-        ],
-        "art": "",
-        "dance": "",
-        "read": [
-          "Read"
-        ]
-      },
-      "gender": "female",
-      "address": [
-        {
-          "addedAddress": "sadfsdf"
-        }
-      ],
-      "summary": "sdfsdf",
-      "id": 35
-    },
-    {
-      "name": "asddsf",
-      "dob": "2023-10-04T18:30:00.000Z",
-      "email": "sdf@asd.cc",
-      "number": {
-        "number": "9875456655",
-        "internationalNumber": "+91 98754 56655",
-        "nationalNumber": "098754 56655",
-        "e164Number": "+919875456655",
-        "countryCode": "IN",
-        "dialCode": "+91"
-      },
-      "education": {
-        "institute": "sadsad",
-        "catagory": {
-          "name": "SSC"
-        },
-        "percentage": 89
-      },
-      "hobby": {
-        "music": "",
-        "art": "",
-        "dance": "",
-        "read": ""
-      },
-      "gender": "female",
-      "address": [],
-      "summary": "",
-      "id": 36
-    },
-    {
       "name": "sfdsdf",
       "dob": "2023-10-04T18:30:00.000Z",
       "email": "sdf@ass.ss",
@@ -273,7 +133,7 @@
     },
     {
       "name": "asdasd",
-      "dob": "2023-10-03T18:30:00.000Z",
+      "dob": "10/04/2023",
       "email": "sad@sadcc.cc",
       "number": {
         "number": "8745465469",
@@ -338,36 +198,6 @@
       "address": [],
       "summary": "",
       "id": 42
-    },
-    {
-      "name": "asdasd",
-      "dob": "2023-10-04T18:30:00.000Z",
-      "email": "asd@asd.ddd",
-      "number": {
-        "number": "9878546587",
-        "internationalNumber": "+91 98785 46587",
-        "nationalNumber": "098785 46587",
-        "e164Number": "+919878546587",
-        "countryCode": "IN",
-        "dialCode": "+91"
-      },
-      "education": {
-        "institute": "swded",
-        "catagory": {
-          "name": "SSC"
-        },
-        "percentage": 98
-      },
-      "hobby": {
-        "music": "",
-        "art": "",
-        "dance": "",
-        "read": ""
-      },
-      "gender": "female",
-      "address": [],
-      "summary": "",
-      "id": 43
     },
     {
       "name": "sdfsdf",
@@ -666,6 +496,198 @@
       ],
       "summary": "dsfsummaryy",
       "id": 52
+    },
+    {
+      "name": "sdsf",
+      "dob": "2023-10-03T18:30:00.000Z",
+      "email": "aa@11.xx",
+      "number": {
+        "number": "9875454555",
+        "internationalNumber": "+91 98754 54555",
+        "nationalNumber": "098754 54555",
+        "e164Number": "+919875454555",
+        "countryCode": "IN",
+        "dialCode": "+91"
+      },
+      "education": {
+        "institute": "sdsdf",
+        "catagory": {
+          "name": "HSC"
+        },
+        "percentage": 89
+      },
+      "hobby": {
+        "music": "",
+        "art": "",
+        "dance": "",
+        "read": ""
+      },
+      "gender": "male",
+      "address": [],
+      "summary": "",
+      "id": 53
+    },
+    {
+      "name": "sdfsdf",
+      "dob": "01/10/2023",
+      "email": "as@11.cc",
+      "number": {
+        "number": "9875455578",
+        "internationalNumber": "+91 98754 55578",
+        "nationalNumber": "098754 55578",
+        "e164Number": "+919875455578",
+        "countryCode": "IN",
+        "dialCode": "+91"
+      },
+      "education": {
+        "institute": "dfsd",
+        "catagory": {
+          "name": "HSC"
+        },
+        "percentage": 89
+      },
+      "hobby": {
+        "music": [
+          "Music"
+        ],
+        "art": "",
+        "dance": "",
+        "read": ""
+      },
+      "gender": "male",
+      "address": [],
+      "summary": "",
+      "id": 54
+    },
+    {
+      "name": "sdfsdf",
+      "dob": "2023-10-04T18:30:00.000Z",
+      "email": "aaa@11.dd",
+      "number": {
+        "number": "9874545444",
+        "internationalNumber": "+91 98745 45444",
+        "nationalNumber": "098745 45444",
+        "e164Number": "+919874545444",
+        "countryCode": "IN",
+        "dialCode": "+91"
+      },
+      "education": {
+        "institute": "asdd",
+        "catagory": {
+          "name": "Bachelors"
+        },
+        "percentage": 78
+      },
+      "hobby": {
+        "music": [
+          "Music"
+        ],
+        "art": [
+          "Art"
+        ],
+        "dance": "",
+        "read": [
+          "Read"
+        ]
+      },
+      "gender": "female",
+      "address": [
+        {
+          "addedAddress": "asdsadsd"
+        }
+      ],
+      "summary": "sdf",
+      "id": 55
+    },
+    {
+      "name": "cfvg",
+      "dob": "10/03/2023",
+      "email": "fgf@qqq.ss",
+      "number": {
+        "number": "9879875455",
+        "internationalNumber": "+91 98798 75455",
+        "nationalNumber": "098798 75455",
+        "e164Number": "+919879875455",
+        "countryCode": "IN",
+        "dialCode": "+91"
+      },
+      "education": {
+        "institute": "sdsd",
+        "catagory": {
+          "name": "HSC"
+        },
+        "percentage": 78
+      },
+      "hobby": {
+        "music": "",
+        "art": "",
+        "dance": "",
+        "read": ""
+      },
+      "gender": "female",
+      "address": [],
+      "summary": "asdasdd",
+      "id": 56
+    },
+    {
+      "name": "sdfs",
+      "dob": "04/10/2023",
+      "email": "ss@ss.cc",
+      "number": {
+        "number": "9879878787",
+        "internationalNumber": "+91 98798 78787",
+        "nationalNumber": "098798 78787",
+        "e164Number": "+919879878787",
+        "countryCode": "IN",
+        "dialCode": "+91"
+      },
+      "education": {
+        "institute": "dsf",
+        "catagory": {
+          "name": "HSC"
+        },
+        "percentage": 99
+      },
+      "hobby": {
+        "music": "",
+        "art": "",
+        "dance": "",
+        "read": ""
+      },
+      "gender": "female",
+      "address": [],
+      "summary": "",
+      "id": 57
+    },
+    {
+      "name": "sdfsdf",
+      "dob": "04/10/2023",
+      "email": "asd@sdf.cc",
+      "number": {
+        "number": "9875454555",
+        "internationalNumber": "+91 98754 54555",
+        "nationalNumber": "098754 54555",
+        "e164Number": "+919875454555",
+        "countryCode": "IN",
+        "dialCode": "+91"
+      },
+      "education": {
+        "institute": "sdfdsf",
+        "catagory": {
+          "name": "Bachelors"
+        },
+        "percentage": 89
+      },
+      "hobby": {
+        "music": "",
+        "art": "",
+        "dance": "",
+        "read": ""
+      },
+      "gender": "female",
+      "address": [],
+      "summary": "",
+      "id": 58
     }
   ]
 }

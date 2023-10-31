@@ -2,11 +2,10 @@ import { Component ,OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { FormArray , FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {SearchCountryField,CountryISO,PhoneNumberFormat} from "ngx-intl-tel-input";
-// import { UserDataService } from '../user-detail.service';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { User } from '../datatype.model';
 import { DatePipe } from '@angular/common';
+import { UserDataService } from 'src/user-data.service';
 
 @Component({
   selector: 'app-user-detail',
@@ -32,6 +31,7 @@ export class UserDetailComponent implements OnInit {
               private router: Router, 
               private http:HttpClient,
               private datePipe: DatePipe,
+              private userData:UserDataService,
               private route: ActivatedRoute) {
       this.catagories = [
         {name: 'SSC'},
@@ -66,9 +66,8 @@ export class UserDetailComponent implements OnInit {
     const userId = this.route.snapshot.params['id'];
 
     if (userId) {
-      this.http.get<User>('http://localhost:3000/user-detail'+'/'+userId).subscribe(formData => {
+      this.userData.userDetailGetIdService(userId).subscribe(formData => {
         const formattedDob = this.datePipe.transform(formData.dob, 'dd/MM/yyyy');
-        console.log(formData , 'update')
         const updateValue = {
           name: formData.name,
           dob: formattedDob,
@@ -102,6 +101,7 @@ export class UserDetailComponent implements OnInit {
   
   get userFormControl(){
     return this.userForm.controls;
+
   }
 
   createAddress(a) : FormGroup {
@@ -121,12 +121,12 @@ export class UserDetailComponent implements OnInit {
     this.address.push(newAddress);
   }
 
-  onSubmit() : void {
+  onSubmitUser() : void {
     if (this.userForm.valid) {
       if (this.route.snapshot.params['id']) {
         // Editing an existing user
         const userId = this.route.snapshot.params['id'];
-        this.http.put('http://localhost:3000/user-detail'+"/"+userId, this.userForm.value).subscribe((result) => {
+        this.userData.userDetailPutService(userId, this.userForm.value).subscribe((result) => {
           if (result) {
             this.router.navigate(['/allUserDetails']);
           }
@@ -134,7 +134,7 @@ export class UserDetailComponent implements OnInit {
       } 
       else {
         // Adding a new user
-        this.http.post('http://localhost:3000/user-detail', this.userForm.value).subscribe((result) => {
+        this.userData.userDetailPostService(this.userForm.value).subscribe((result) => {
           if (result) {
             this.router.navigate(['/userDetails']);
           }

@@ -1,5 +1,5 @@
 <div class="log-in-container">
-    <form #logInForm="ngForm" (ngSubmit)="onLogIn(logInForm.value)">
+    <form #logInForm="ngForm" (ngSubmit)="onLogInUser()">
         <p-card header="Login here..." class="log-in-title">
             <div class="padding--bottom">
                 <input class="width--full input--container" placeholder="Email" pInputText id="email"
@@ -25,7 +25,7 @@
             </div>
             <div>
                 <p-button class="log-in-button" label="Show All User" [raised]="true" [disabled]="!logInForm.form.valid"
-                    type="button" (click)="onShowAll()"></p-button>
+                    type="button" (click)="onShowAllUser()"></p-button>
             </div>
         </p-card>
     </form>

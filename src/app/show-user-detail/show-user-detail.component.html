@@ -1,6 +1,6 @@
 <div class="table--container">
     <h2 class=" heading">Users details</h2>
-    <p-table [columns]="displayColumn" [value]="userDetailArray" [tableStyle]="{ 'min-width': '50rem' }" class="card">
+    <p-table [columns]="displayColumn" [value]="userDetailValues" [tableStyle]="{ 'min-width': '50rem' }" class="card">
         <ng-template pTemplate="header" let-columns>
             <tr>
                 <th class="header" *ngFor="let col of columns">
@@ -23,9 +23,9 @@
                 <td *ngIf="userDetail.hobby">{{userDetail.hobby}}</td>
                 <td *ngIf="userDetail.address">{{userDetail.address}}</td>
                 <td *ngIf="userDetail.summary">{{userDetail.summary}}</td>
-                <td class="action--container">
-                    <p-button class="button" label="Edit" [raised]="true" type="button" (click)="onEdit()"></p-button>
-                    <p-button class="button" label="Delete" [raised]="true" type="button" (click)="onDelete(userDetail.id)"></p-button>
+                <td class="flex flex-row column-gap-2">
+                    <p-button class="button" label="Edit" [raised]="true" type="button" (click)="onEditUser()"></p-button>
+                    <p-button class="button" label="Delete" [raised]="true" type="button" (click)="onDeleteUser(userDetail.id)"></p-button>
                 </td>
             </tr>
         </ng-template> 

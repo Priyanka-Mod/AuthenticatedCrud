@@ -11,11 +11,10 @@ export class LogInComponent {
   
   constructor(private router: Router ){}
 
-  onLogIn(data){
-    console.log(data)
+  onLogInUser(){
     this.router.navigate(['/form'])
   }
-  onShowAll(){
+  onShowAllUser(){
     this.router.navigate(['/allUserDetails'])
   }
 }
