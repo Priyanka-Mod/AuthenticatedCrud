@@ -66,33 +66,34 @@ export class UserDetailComponent implements OnInit {
     const userId = this.route.snapshot.params['id'];
 
     if (userId) {
-      this.userService.editUser(userId).subscribe(formData => {
-        const formattedDob = this.datePipe.transform(formData.dob, 'dd/MM/yyyy');
+      this.userService.editUser(userId).subscribe(formUserData => {
+        console.log(formUserData,'edit from table')
+        const formattedDob = this.datePipe.transform(formUserData.dob, 'dd/MM/yyyy');
         const updateValue = {
-          name: formData.name,
+          name: formUserData.name,
           dob: formattedDob,
-          email: formData.email,
-          number: formData.number,
+          email: formUserData.email,
+          number: formUserData.number,
           education:{
-            institute: formData.education.institute,
-            catagory: formData.education.catagory,
-            percentage: formData.education.percentage,
+            institute: formUserData.education.institute,
+            catagory: formUserData.education.catagory,
+            percentage: formUserData.education.percentage,
           },
-          gender: formData.gender,
-          summary: formData.summary,
+          gender: formUserData.gender,
+          summary: formUserData.summary,
           
         }
         const hobby:object = {}
-        for(let key in formData.hobby){
-          if(formData.hobby[key]) {
-            hobby[key]=formData.hobby[key]
+        for(let key in formUserData.hobby){
+          if(formUserData.hobby[key]) {
+            hobby[key]=formUserData.hobby[key]
           }
         }
         updateValue['hobby']=hobby;
 
-        for(let a of formData.address){
-          this.address.push(this.createAddress(a))
-          this.userForm.patchValue(a)
+        for(let address of formUserData.address){
+          this.address.push(this.createAddress(address))
+          this.userForm.patchValue(address)
         }
         this.userForm.patchValue(updateValue);
       })
@@ -104,9 +105,9 @@ export class UserDetailComponent implements OnInit {
 
   }
 
-  createAddress(a) : FormGroup {
+  createAddress(address) : FormGroup {
     return this.formBuilder.group({
-      addedAddress: a.addedAddress
+      addedAddress: address.addedAddress
     });
   }
 
@@ -126,20 +127,29 @@ export class UserDetailComponent implements OnInit {
       if (this.route.snapshot.params['id']) {
         // Editing an existing user
         const userId = this.route.snapshot.params['id'];
-        this.userService.updateSingleUser(userId, this.userForm.value).subscribe((result) => {
-          if (result) {
+        this.userService.updateSingleUser(userId, this.userForm.value).subscribe((userData) => {
+          if (userData) {
             this.router.navigate(['/user-list']);
           }
         });
       } 
       else {
         // Adding a new user
-        this.userService.updateUser(this.userForm.value).subscribe((result) => {
-          if (result) {
+        this.userService.updateUser(this.userForm.value).subscribe((userData) => {
+          if (userData) {
             this.router.navigate(['/user-detail']);
           }
         });
       }
     } 
   }
+
+  onShowAllUser(){
+    this.router.navigate(['/user-list'])
+  }
+
+  cancelButton(){
+    this.router.navigate(['/user-list'])
+  }
+
 }

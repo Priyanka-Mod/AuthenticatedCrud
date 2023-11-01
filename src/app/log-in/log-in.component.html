@@ -20,11 +20,11 @@
                     capital,lowercase,digit and number</div>
             </div>
             <div>
-                <p-button class="log-in-button padding--bottom" label="Log In" [raised]="true"
+                <p-button class="button--width padding--bottom" label="Log In" [raised]="true" severity="info"
                     [disabled]="!logInForm.form.valid" type="submit"></p-button>
             </div>
             <div>
-                <p-button class="log-in-button" label="Show All User" [raised]="true" [disabled]="!logInForm.form.valid"
+                <p-button class="button--width" label="Show All User" [raised]="true" [disabled]="!logInForm.form.valid" severity="help"
                     type="button" (click)="onShowAllUser()"></p-button>
             </div>
         </p-card>

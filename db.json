@@ -2,7 +2,7 @@
   "user-detail": [
     {
       "name": "sfdsdf",
-      "dob": "2023-10-04T18:30:00.000Z",
+      "dob": "10/05/2023",
       "email": "sdf@ass.ss",
       "number": {
         "number": "9875465555",
@@ -103,7 +103,7 @@
     },
     {
       "name": "dfdf",
-      "dob": "05/10/2023",
+      "dob": "10/05/2023",
       "email": "sdf@ss.ssd",
       "number": {
         "number": "9754546545",
@@ -127,7 +127,11 @@
         "read": ""
       },
       "gender": "female",
-      "address": [],
+      "address": [
+        {
+          "addedAddress": "asdasdsd"
+        }
+      ],
       "summary": "",
       "id": 40
     },
@@ -561,7 +565,7 @@
     },
     {
       "name": "sdfsdf",
-      "dob": "2023-10-04T18:30:00.000Z",
+      "dob": "10/05/2023",
       "email": "aaa@11.dd",
       "number": {
         "number": "9874545444",
@@ -594,6 +598,12 @@
       "address": [
         {
           "addedAddress": "asdsadsd"
+        },
+        {
+          "addedAddress": "dsfdfsdfsf"
+        },
+        {
+          "addedAddress": "sdfsdfdf2"
         }
       ],
       "summary": "sdf",
@@ -748,6 +758,36 @@
       "address": [],
       "summary": "",
       "id": 60
+    },
+    {
+      "name": "sdsdfqq",
+      "dob": "02/10/2023",
+      "email": "sdf@asd.cc",
+      "number": {
+        "number": "9878454544",
+        "internationalNumber": "+91 98784 54544",
+        "nationalNumber": "098784 54544",
+        "e164Number": "+919878454544",
+        "countryCode": "IN",
+        "dialCode": "+91"
+      },
+      "education": {
+        "institute": "sdfsdf",
+        "catagory": {
+          "name": "HSC"
+        },
+        "percentage": 89
+      },
+      "hobby": {
+        "music": "",
+        "art": "",
+        "dance": "",
+        "read": ""
+      },
+      "gender": "female",
+      "address": [],
+      "summary": "",
+      "id": 61
     }
   ]
 }

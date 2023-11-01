@@ -14,21 +14,20 @@ import { UserDataService } from 'src/user-data.service';
 export class ShowAllUsersComponent implements OnInit {
   formShowUserData: User
   userDataArray: User[] = []
-  userAddress: string = '';
   userDetailValues: userDetail[];
 
   userDetailArray: userDetail[] = [];
-  displayColumn = ['name', 'email', 'dob', 'number', 'institute', 'catagory', 'percentage', 'gender', 'hobby', 'address', 'summary', 'action'];
+  displayColumn = ['name', 'action'];
 
   constructor(private http: HttpClient,
     private userService:UserDataService,
     private router: Router) { }
 
   ngOnInit(): void {
-    this.userService.getUser().subscribe(formData => {
-      this.userDataArray = formData as User[];   //to define that it is of type user[] in get request
-      for (let i in formData) {
-        this.formShowUserData = this.userDataArray[i];
+    this.userService.getUser().subscribe(users => {
+      this.userDataArray = users as User[];   //to define that it is of type user[] in get request
+      for (let user in users) {
+        this.formShowUserData = this.userDataArray[user];
       }
       const userDetail: userDetail = {
         name: this.formShowUserData.name,
@@ -41,10 +40,11 @@ export class ShowAllUsersComponent implements OnInit {
         gender: this.formShowUserData.gender,
       }
 
-      this.userDetailArray.push(userDetail)
-      this.userDetailValues = this.userDetailArray
-
     });
+  }
+
+  viewUser(userId:number){
+    this.router.navigate(['/user-detail',userId]);
   }
   onCreateUser(){
     this.router.navigate(['/form'])

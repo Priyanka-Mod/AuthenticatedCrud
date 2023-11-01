@@ -1,5 +1,5 @@
 .table--container{
-    background-color: lavender;
+    /* background-color: lavender; */
     height: auto;
 }
 .heading--container{
@@ -9,30 +9,34 @@
     padding: 20px 0px;
 }
 .button {
-    .p-button.p-button-raised {
-        width: 100%;
-        background-color: rgb(123, 39, 201);
-        border-color: none;
-    }
     .p-button{
-        border-style: none;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
         border-radius: 6px;
     }
 }
 
-.card{
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    margin: 0px 20px;
-    max-height: 888px;
-    overflow-y: auto;
+:host ::ng-deep .p-datatable > .p-datatable-wrapper{
+    overflow: visible;
 }
-.header{
-    background-color: rgb(152, 79, 221);
-    color: white;
+
+:host ::ng-deep .p-datatable .p-datatable-thead > tr > th { 
+    position: -webkit-sticky; 
+    position: sticky; 
+    top: 0px; 
+    z-index: 100;
+}
+
+.card{
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+    margin: 0px 20px;
+    max-height: 800px;
+    overflow-y: auto;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .heading{
-    color: blueviolet;
     font-size: xx-large;
+    font-weight: 800;
 }

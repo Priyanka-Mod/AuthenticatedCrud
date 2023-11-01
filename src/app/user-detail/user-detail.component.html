@@ -83,7 +83,7 @@
             <div  class="error--message" *ngIf="userFormControl.gender.touched && !userFormControl.gender.valid"> Please select your gender </div>
 
             <div>
-                <p-button class="add-address-button button--style" (click)="addAddress()" type="button"> Add
+                <p-button class="add-address-button button--style" (click)="addAddress()" severity="warning" type="button"> Add
                     Address
                 </p-button>
             </div>
@@ -101,9 +101,14 @@
                 <textarea placeholder="Summary" class="textarea--input margin--bottom"
                     pInputTextarea formControlName="summary"></textarea>
             </div>
-            <div class="buttons">
-                <p-button class="button--style" label="Submit" [raised]="true" [disabled]="!userForm.valid" type="submit"></p-button>
-                <p-button class="button--style" label="Reset" type="reset"></p-button>
+            <div class="buttons flex justify-content-center">
+                <p-button class="button--style" label="Reset" severity="info" type="reset"></p-button>
+                <p-button class="button--style" label="Cancel" severity="secondary" type="button" (click)="cancelButton()"></p-button>
+                <p-button class="button--style" label="Submit" [raised]="true" [disabled]="!userForm.valid" severity="success" type="submit"></p-button>
+            </div>
+            <div class="flex justify-content-center">
+                
+                <p-button class="button--style" label="Show All User" [raised]="true" severity="help" type="button" (click)="onShowAllUser()"></p-button>
             </div>
         </p-card>
     </form>

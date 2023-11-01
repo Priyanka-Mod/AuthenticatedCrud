@@ -1,15 +1,9 @@
 .table--container{
-    background-color: lavender;
     height: 100vh;
 }
 .button {
-    .p-button.p-button-raised {
-        width: 100%;
-        background-color: rgb(123, 39, 201);
-        border-color: none;
-    }
+    
     .p-button{
-        border-style: none;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
         border-radius: 6px;
     }
@@ -21,15 +15,21 @@
 .padding--top{
     padding-top:20px;
 }
-.header{
-    background-color: rgb(152, 79, 221);
-    color: white;
+
+.showAll{
+    .p-button{
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        border-radius: 6px;
+        background: #f75555;
+        border: none;
+    }
+    
 }
+
 .card{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin: 0px 20px;
 }
 .heading{
-    color: blueviolet;
     padding: 20px;
 }

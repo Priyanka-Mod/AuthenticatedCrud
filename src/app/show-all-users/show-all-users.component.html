@@ -2,7 +2,7 @@
     <div class="heading--container">
         <span class="heading">All users details</span> 
         <span>
-            <p-button class="button" label="Add new user" [raised]="true" type="button" (click)="onCreateUser()"></p-button>
+            <p-button class="button" label="Add new user" [raised]="true" type="button" severity="warning" (click)="onCreateUser()"></p-button>
         </span>
     </div>
     
@@ -19,37 +19,10 @@
                 <td>
                     {{ userDetail.name | uppercase }}
                 </td>
-                <td>{{userDetail.email}}</td>
-                <td>{{userDetail.dob |  date:'longDate'}}</td>
-                <td>{{userDetail.number.internationalNumber}}</td>
-                <td>{{userDetail.education.institute}}</td>
-                <td>{{userDetail.education.catagory.name}}</td>
-                <td>{{userDetail.education.percentage}}</td>
-                <td>{{userDetail.gender}}</td>
-                <td  *ngIf="userDetail.hobby">{{userDetail.hobby.art }} <br> {{userDetail.hobby.music}} <br> {{userDetail.hobby.read}} <br> {{userDetail.hobby.dance}}</td>
-
-                <td>
-                    <ng-container *ngIf="userDetail.address && userDetail.address.length > 0">
-                      <div *ngFor="let address of userDetail.address">
-                        {{ address.addedAddress }}
-                        <br>
-                      </div>
-                    </ng-container>
-                    <ng-container *ngIf="!userDetail.address || userDetail.address.length === 0">
-                      -
-                    </ng-container>
-                </td>
-                <td>
-                    <ng-container *ngIf="userDetail.summary">
-                        <div>{{userDetail.summary}}</div>
-                    </ng-container>
-                    <ng-container *ngIf="!userDetail.summary || userDetail.summary.length === 0">
-                        -
-                      </ng-container>
-                </td>
+                
                 <td class="flex flex-row column-gap-2" >
-                    <p-button class="button" label="Edit" [raised]="true" type="button" (click)="onEditUser(userDetail.id)"></p-button>
-                    <p-button class="button" label="Delete" [raised]="true" type="button" (click)="onDeleteUser(userDetail.id)"></p-button>
+                    <p-button class="button" label="view" [raised]="true" severity="info" (click)="viewUser(userDetail.id)"></p-button>
+                    
                 </td>
             </tr>
         </ng-template>
