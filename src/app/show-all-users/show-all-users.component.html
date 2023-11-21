@@ -5,28 +5,36 @@
             <p-button class="button" label="Add new user" [raised]="true" type="button" severity="warning" (click)="onCreateUser()"></p-button>
         </span>
     </div>
-    
-    <p-table [columns]="displayColumn" [value]="userDataArray"  styleClass="p-datatable-gridlines" class="card">
-        <ng-template pTemplate="header" let-columns>
-            <tr>
-                <th class="header" *ngFor="let col of columns">
-                    {{ col | uppercase}}
-                </th>
-            </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-userDetail >
-            <tr>
-                <td>
-                    {{ userDetail.name | uppercase }}
-                </td>
-                
-                <td class="flex flex-row column-gap-2" >
-                    <p-button class="button" label="view" [raised]="true" severity="info" (click)="viewUser(userDetail.id)"></p-button>
+    <div class="m-auto w-fit">
+        <div class="pb-4">
+            <input class="m-auto" pInputText type="text" (input)="dt.filter($event.target.value, 'name', 'startsWith')" placeholder="Search by Name" class="p-column-filter">
+        </div>
+        <p-table #dt [columns]="displayColumn" [value]="userDataArray"  styleClass="p-datatable-gridlines" class="card" 
+        [paginator]="true" [rows]="5" [showCurrentPageReport]="true" 
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,20]">
+        
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th class="header" *ngFor="let col of columns" pSortableColumn= 'name'>
+                        {{ col | uppercase}}<p-sortIcon field="code" *ngIf="col === 'name'"></p-sortIcon>
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-userDetail >
+                <tr>
+                    <td>
+                        {{ userDetail.name | uppercase }}
+                    </td>
                     
-                </td>
-            </tr>
-        </ng-template>
-
+                    <td class="flex flex-row column-gap-2" >
+                        <p-button class="button" label="view" [raised]="true" severity="info" (click)="viewUser(userDetail.id)"></p-button>
+                        
+                    </td>
+                </tr>
+            </ng-template>
     
-    </p-table>
+        
+        </p-table>
+    </div>
+
 </div>
